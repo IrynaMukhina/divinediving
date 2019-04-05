@@ -1,0 +1,212 @@
+@mixin fontStyle {
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    color: $textColor;
+    font-weight: $fontWeight; 
+    line-height: 1.5;
+}
+@mixin articleHeading {
+    text-transform: uppercase;
+    color: $headingColor;
+    margin: 4px;
+}
+@mixin button {
+    cursor: pointer;
+    border: none;
+    background-color: $primeryColor;
+    color: #ffffff;
+    text-transform: uppercase;
+    padding: 10px 60px 10px 60px;
+}
+@mixin headingStyle {
+    text-transform: uppercase;
+    margin: 10px 0 0 0;   
+    display: flex;
+    justify-content: flex-end;
+}
+
+body {
+    @include fontStyle;
+    background: $contentBackground;
+    margin: 0;   
+}
+header {
+    background: $backgroundImage no-repeat;
+    height: 100vh;
+    background-size: cover;
+    .logo {
+        img {
+            height: 20%;
+            width: 20%;
+        }
+    }
+    nav {
+        width: 50%;
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+        left: 45%;
+        top: 0;     
+        a {
+            text-align: center;
+            padding: 15px 100px 15px 100px;
+            color: $headerTextColor;
+            text-decoration: none;
+            text-transform: uppercase;
+            &:nth-child(2) {
+                border-left: $borderStyle;
+                border-right: $borderStyle;
+            }
+            &:hover {
+                background-color: rgba($color: #ffffff, $alpha: 0.4)
+            }
+        }
+    }
+    section {
+        margin-top: 100px;
+        vertical-align: middle;
+        text-align: center;
+        h1 {
+            color: $headerTextColor;
+            text-transform: uppercase;
+        }
+        .btn-top {
+            @include button;
+            text-decoration: none;
+            &:hover {
+                background-color: $hoverButtonColor;
+            }
+        }
+    }
+}
+main {
+    margin: 0 auto;     
+    width: 960px;
+}
+.toolbar {
+    margin: 15px 0 15px 0;
+    display: flex;
+    justify-content: flex-end;
+    
+    input[type="text"] {
+        padding: 10px;
+        border: $borderStyle;
+        background-color: $contentBackground;
+    }
+}
+.post-list {
+    display: flex;
+    flex-direction: column;
+    h1 {
+        @include headingStyle;
+    }
+}
+article {
+    display: flex;
+    flex-direction: row;
+    background-color: $articleBgColor;
+    padding: 10px;
+    margin-bottom: 15px;
+    img {
+        width: 30%;
+        height: 30%;
+    }
+    div {
+        padding: 5px;
+        flex-direction: column;
+        .post {
+            .post-description {
+                color: $articleDescriptionColor;
+                border-bottom: $borderStyle;
+            }
+            h3 {
+                @include articleHeading;
+            }
+            p {
+                margin: 0;
+            }
+        }
+        .btn {
+            @include button;
+            margin: 10px 15px 0 0;
+            float: right;
+            &:hover {
+                background-color: $hoverButtonColor;
+            }
+        }
+    }
+}
+.about {
+    h1 {
+        @include headingStyle;
+    }
+    p {
+        &:first-of-type {
+            margin-top: 0;
+        }
+    }
+    img {
+        width: 100%;
+    }
+}
+.contact-form {
+    h1 {
+        @include headingStyle;
+    }
+    h4 {
+        @include headingStyle;
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        .form-group {
+            p {
+                text-align: right;
+                color: $headingColor;
+                margin-bottom: 0;
+            }
+            .form-control {
+                border: $borderStyle;
+                height: 30px;
+                width: 100%;
+                padding: 0;
+                background-color: $contentBackground;
+            }
+            #contact_message {
+                height: 100px;
+                resize: none;               
+            }
+        }
+        .form-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            div {
+                width: 48%;   
+            }
+        }
+        .submit-btn {
+            @include button;
+            width: 170px;
+            float: right;
+            &:hover {
+                background-color: $hoverButtonColor;
+            }
+        }
+        
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    header {
+        nav {
+            position: absolute;
+            left: 35%;
+            top: 0;
+            a {
+                padding: 15px 50px 15px 50px;
+            }
+        }
+    }
+}
